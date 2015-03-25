@@ -26,29 +26,29 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
             controller: 'pvCtl',
             reloadOnSearch: false
         })
-        .when('/test1',{
-            templateUrl: 'views/test1.html',
-            controller: 'pvCtl',
+        .when('/echartsBar',{
+            templateUrl: 'views/echartsBar.html',
+            controller: 'echartsBarCtl',
             reloadOnSearch: false
         })
-        .when('/test2',{
-            templateUrl: 'views/test2.html',
-            controller: 'pvCtl',
+        .when('/echartsPie',{
+            templateUrl: 'views/echartsPie.html',
+            controller: 'echartsPieCtl',
             reloadOnSearch: false
         })
-        .when('/test3',{
-            templateUrl: 'views/test3.html',
-            controller: 'pvCtl',
+        .when('/echartsMap',{
+            templateUrl: 'views/echartsMap.html',
+            controller: 'echartsMapCtl',
             reloadOnSearch: false
         })
-        .when('/test4',{
-            templateUrl: 'views/test4.html',
-            controller: 'pvCtl',
+        .when('/echartsRadar',{
+            templateUrl: 'views/echartsRadar.html',
+            controller: 'echartsRadarCtl',
             reloadOnSearch: false
         })
-        .when('/test5',{
-            templateUrl: 'views/test5.html',
-            controller: 'pvCtl',
+        .when('/echartsLine',{
+            templateUrl: 'views/echartsLine.html',
+            controller: 'echartsLineCtl',
             reloadOnSearch: false
         })
         .otherwise({redirectTo: '/'});
