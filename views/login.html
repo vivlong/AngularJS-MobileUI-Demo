@@ -1,0 +1,52 @@
+<div ui-content-for="title">
+    <span></span>
+</div>
+
+<style>
+    .header {
+        text-align: center;
+    }
+    .header h1 {
+        font-size: 300%;
+        color: #027bff;
+        margin-top: 1rem;
+    }
+    .header p {
+        font-size: 2rem;
+    }
+</style>
+
+<div class="scrollable">
+    <div class="scrollable-content section">
+        <div class="header">
+            <h1>SysFreight</h1>
+            <p>Mobile Operation App</p>
+            <br/>
+        </div>
+        <form id="LoginForm" role="form" ng-submit="login()">
+            <fieldset>
+                <legend>Login</legend>
+                <!-- SHOW ERROR/SUCCESS MESSAGES -->
+                <div id="messages" class="alert alert-danger" role="alert" ng-show="message">
+                    <strong>Error!</strong>&nbsp;&nbsp;{{ message }}
+                </div>
+                <div id="grpUserName" class="form-group" ng-class="{ 'has-error' : errorUserName }">
+                    <label for="strUserName">User Name</label>
+                    <input type="text" class="form-control" id="strUserName" placeholder="Please enter user name" required ng-model="logininfo.strUserName">
+                </div>
+                <div id="grpPassword" class="form-group" ng-class="{ 'has-error' : errorPassword }">
+                    <label for="strPassword">Password</label>
+                    <input type="password" class="form-control" id="strPassword" placeholder="Please enter password" ng-model="logininfo.strPassword">
+                </div>
+                <div class="form-group">
+                    <label>Remember Me</label>
+                    <ui-switch ng-model='rememberMe'></ui-switch>
+                </div>
+            </fieldset>
+            <hr>
+            <button class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+</div>
+<div ui-content-for="navbarAction">
+</div>

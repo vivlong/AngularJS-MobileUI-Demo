@@ -1,0 +1,96 @@
+<div ui-content-for="title">
+    <span>Payment Voucher</span>
+</div>
+
+<style>
+.section {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%;
+    font-size: 1.2em;
+}
+.pager {
+    margin: 0.8em 0;
+}
+</style>
+
+<div class="scrollable">
+    <div class="scrollable-content section">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <div class="btn-group" ng-class="{open: open}">
+                    <a ui-turn-on='myDropdown' class='btn'>
+                        {{ strSearchBy }} <span class="caret"></span>
+                    </a>
+                    <ul
+                            class="dropdown-menu"
+                            ui-outer-click="Ui.turnOff('myDropdown')"
+                            ui-outer-click-if="Ui.active('myDropdown')"
+                            role="menu"
+                            ui-show="myDropdown"
+                            ui-state="myDropdown"
+                            ui-turn-off="myDropdown">
+                        <li><a ng-click="searchBy(0)">Voucher No</a></li>
+                        <li><a ng-click="searchBy(1)">Vendor Name</a></li>
+                        <li class="divider"></li>
+                    </ul>
+                </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="searchinfo.strSearch">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+        <hr>
+        <!-- Modals and Overlays -->
+        <div ui-yield-to="modals">
+            <div ui-content-for="modals">
+                <div ng-include="'views/msgModal.html'"></div>
+            </div>
+        </div>
+
+        <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-save-state ui-grid-cellNav class="gridStyle" style="height: 270px;"></div>
+        <div class="pager" role="group">
+            <div class="btn-group" role="group">
+                <p  class="btn btn-sm" >
+                    Page: {{ gridApi.pagination.getPage() }} of {{ gridApi.pagination.getTotalPages() }}
+                </p>
+            </div>
+            &nbsp;
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-info btn-sm" ng-click="gridApi.pagination.previousPage()">&lt;</button>
+            </div>
+            &nbsp;
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-info btn-sm" ng-click="gridApi.pagination.nextPage()">&gt;</button>
+            </div>
+            &nbsp;
+            <div class="btn-group" role="group">
+                <p class="btn btn-sm" >Status = {{ fStatus }}</p>
+            </div>
+            <div class="btn-group" role="group">
+                <ui-switch ng-model='filterStatus'></ui-switch>
+            </div>
+        </div>
+        <hr>
+        <div class="pager" role="group">
+            <div class="btn-group" role="group">
+                <button class="btn btn-default" ng-click="selectAll()">Select All</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button class="btn btn-default" ng-click="clearAll()">Clear All</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button class="btn btn-default" ng-click="updateSave()" ui-turn-on="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ui-content-for="navbarAction">
+</div>
